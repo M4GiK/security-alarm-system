@@ -22,19 +22,11 @@ public class SignupController {
 	
 	@RequestMapping(value = "signup")
 	public String signup(Model model) {
-		model.addAttribute(new SignupForm());
-        return SIGNUP_VIEW_NAME;
+		throw new IllegalStateException("Signup is not allowed"); 
 	}
 	
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
 	public String signup(@Valid @ModelAttribute SignupForm signupForm, Errors errors, RedirectAttributes ra) {
-		if (errors.hasErrors()) {
-			return SIGNUP_VIEW_NAME;
-		}
-		Account account = accountService.save(signupForm.createAccount());
-		accountService.signin(account);
-        // see /WEB-INF/i18n/messages.properties and /WEB-INF/views/homeSignedIn.html
-        MessageHelper.addSuccessAttribute(ra, "signup.success");
-		return "redirect:/";
+		throw new IllegalStateException("Signup is not allowed"); 
 	}
 }
